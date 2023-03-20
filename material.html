@@ -123,20 +123,22 @@
         } else {
           agvjson.positionCodePath[0].positionCode =
             document.getElementById("fname").value;
-          agvjson.podCode = document.getElementById("fname").value;
         }
       }
       function dropselect() {
-        agvjson.taskTyp = "DDPA2";
+        agvjson.taskTyp = "DDPA";
         if (document.getElementById("age1").checked == true) {
           agvjson.positionCodePath[1].positionCode = "10";
+          agvjson.positionCodePath[1].type = "04";
         } else if (document.getElementById("age2").checked == true) {
           agvjson.positionCodePath[1].positionCode = "SxKeo";
+          agvjson.positionCodePath[1].type = "04";
         } else if (document.getElementById("age3").checked == true) {
           agvjson.positionCodePath[1].positionCode = "KhuChien";
+          agvjson.positionCodePath[1].type = "04";
         } else if (document.getElementById("age4").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "W22";
-          agvjson.positionCodePath[1].type = "00";
+          agvjson.positionCodePath[1].positionCode = "2";
+          agvjson.positionCodePath[1].type = "02";
         } else if (document.getElementById("age5").checked == true) {
           agvjson.positionCodePath[1].positionCode = "77";
         } else {
@@ -161,7 +163,7 @@
             if (data.code == "0") {
               alert("Call AGV successfully");
             } else {
-              alert("Call AGV fail!");
+              alert(data.message);
             }
           });
       }
