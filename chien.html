@@ -98,16 +98,16 @@
           },
           body: JSON.stringify(agvjson),
           method: "POST",
-        });
-        console.log(agvjson);
-        console.log(JSON.stringify(response.body));
-        console.log(response.statusText);
-        console.log(response.status);
-        if (response.reqCode == null) {
-          alert("Call AGV fail!");
-        } else {
-          alert("Call AGV successfully!");
-        }
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.code == "0") {
+              alert("Call AGV successfully");
+            } else {
+              alert("Call AGV fail!");
+            }
+          });
       }
     </script>
   </body>

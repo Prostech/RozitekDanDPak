@@ -150,22 +150,23 @@
       }
       async function sendRCS() {
         const endpoint = new URL("http://192.168.20.2:3000/api/connector");
-        const response = await fetch(endpoint, {
+        let response = await fetch(endpoint, {
           headers: {
             Accept: "application/json, text/plain, */*",
             "Content-Type": "application/json;charset=utf-8",
           },
           body: JSON.stringify(agvjson),
           method: "POST",
-        });
-        console.log(JSON.stringify(response.body));
-        console.log(response.statusText);
-        console.log(response.status);
-        if (response.reqCode == null) {
-          alert("Call AGV fail!");
-        } else {
-          alert("Call AGV successfully!");
-        }
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.code == "0") {
+              alert("Call AGV successfully");
+            } else {
+              alert("Call AGV fail!");
+            }
+          });
       }
       agvcall.addEventListener("click", function () {
         pickupselect();

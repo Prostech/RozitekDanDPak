@@ -154,17 +154,16 @@
           },
           body: JSON.stringify(agvjson),
           method: "POST",
-        });
-        if (response.status == 404) {
-          alert("Error");
-          return;
-        } else if (response.status == 204) {
-          alert("Please Scan");
-        } else {
-          alert("Call Successfully");
-        }
-        //alert(response.body.code);
-        console.log(response.body);
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.code == "0") {
+              alert("Call AGV successfully");
+            } else {
+              alert("Call AGV fail!");
+            }
+          });
       }
       agvcall.addEventListener("click", function () {
         console.log(document.getElementById("fname").value);
