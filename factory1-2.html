@@ -161,7 +161,8 @@
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            if (data.code == "0") {
+            var code = JSON.parse(data);
+            if (code.code == "0") {
               alert("Call AGV successfully");
             } else {
               alert("Call AGV fail!");
