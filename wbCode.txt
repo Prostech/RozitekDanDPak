@@ -1,0 +1,14 @@
+Vi tri A - 100036AB042713
+Vi tri B - 098636AB042713
+Thanh pham Say - 100051AB122620
+Thanh pham Chien - 118500AB112420
+Thanh pham Keo - 133500AB119220
+Phan Loai - 135650AB103970
+
+Inbound id
+Kho nguyen lieu - 10
+Kho thong minh - 11
+Nguyen lieu say - 12
+Nguyen lieu chien - 13
+Nguyen lieu keo - 14
+Kho van phong -15

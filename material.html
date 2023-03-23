@@ -35,6 +35,7 @@
           name="fname"
           placeholder="Scan mã RACK!"
         />
+        <inut type="text" id="taskCode" name="taksCode" value="" hidden></inut>
       </div>
       <div class="Drop">
         <input
@@ -69,46 +70,29 @@
           onclick="focusTest()"
         />
         <label for="age4">Nhà Máy 1</label>
-        <!-- <input type="radio" id="age5" name="age" value="5" />
-      <label for="age5">Máy Chiên 6</label><br />   -->
       </div>
     </div>
     <div class="Confirm">
       <button class="Button12" id="callAGV" type="Confirm">Xác Nhận</button>
     </div>
-    <!-- <div class="main-image">
-        <div class="container">
-          <img src="/image/solution-by-application.png" alt="">
-        </div>
-      </div> -->
-    <!-- <div class="Mobile-menu">
-        <div class="container">
-          <ul class="navbar-menu">
-            <li><a href="">Nhà máy 1-2<img src="/image/factory.png" alt=""> </a></li>
-            <li><a href="">Kho Nguyên Liệu<img src="/image/maeterial.jpg" alt=""></a></li>
-            <li><a href="">Khu Thành Phẩm<img src="/image/finishedgood.png" alt=""></a></li>
-        </div>
-      </div> -->
+
     <div class="footer">
       <div class="container">
         <img class="foot-img" src="/image/Logo-01.svg" alt="" />
       </div>
     </div>
     <script>
+      var dt = new Date().toString();
       const agvcall = document.getElementById("callAGV");
       let agvjson = {
         reqCode: "",
-        taskTyp: "DDPA2",
-        positionCodePath: [
+        reqTime: "",
+        taskTyp: "4",
+        data: [
           {
-            //Departure
-            positionCode: "124",
-            type: "03",
-          },
-          {
-            //Destination
-            positionCode: "10",
-            type: "04",
+            taskCode: dt,
+            binCode: "000020",
+            wbCode: "Workstation1",
           },
         ],
         //podCode: " ",
@@ -148,6 +132,7 @@
         sendRCS();
       }
       async function sendRCS() {
+        console.log(agvjson);
         const endpoint = new URL("http://192.168.20.2:3000/api/connector");
         const response = await fetch(endpoint, {
           headers: {
@@ -160,7 +145,6 @@
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            var code = JSON.parse(data);
             var code = JSON.parse(data);
             if (code.code == "0") {
               alert("Call AGV successfully");
